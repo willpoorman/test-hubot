@@ -5,6 +5,7 @@
   "author": "Will <will.k.poorman@gmail.com>",
   "description": "Testing hubot for the-backyard",
   "dependencies": {
+    "coffee-script": "^1.12.7",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "^0.2.7",
