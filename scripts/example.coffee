@@ -10,6 +10,15 @@
 
 module.exports = (robot) ->
 
+  robot.respond /remember this: (.*)/i, (res) ->
+    newMemory = res.match[1]
+    robot.brain.set('memories', newMemory)
+    res.send "Storing in memory: #{newMemory}"
+
+  robot.respond /what do you remember/i, (res) ->
+    aMemory = robot.brain.get('memories')
+    res.send "I remember: #{aMemory}"
+
   # robot.hear /badger/i, (res) ->
   #   res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
   #
@@ -40,13 +49,13 @@ module.exports = (robot) ->
   # robot.leave (res) ->
   #   res.send res.random leaveReplies
   #
-  # answer = process.env.HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING
+  answer = process.env.HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING
   #
-  # robot.respond /what is the answer to the ultimate question of life/, (res) ->
-  #   unless answer?
-  #     res.send "Missing HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING in environment: please set and try again"
-  #     return
-  #   res.send "#{answer}, but what is the question?"
+  robot.respond /what is the answer to the ultimate question of life/, (res) ->
+    unless answer?
+      res.send "Missing HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING in environment: please set and try again"
+      return
+    res.send "#{answer}, but what is the question?"
   #
   # robot.respond /you are a little slow/, (res) ->
   #   setTimeout () ->
