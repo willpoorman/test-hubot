@@ -7,6 +7,7 @@
   "dependencies": {
     "coffee-script": "^1.12.7",
     "hubot": "^2.19.0",
+    "hubot-auth": "^2.1.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-help": "^0.2.2",
     "hubot-maps": "0.0.3",
